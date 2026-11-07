@@ -1,463 +1,589 @@
+Claude
+
+
+Arya lida · HTML
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arya & Lida - Our Story ❤️</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Great+Vibes&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-
+<meta name="theme-color" content="#eaeef2">
+<title>Arya & Lida - Our Story</title>
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+ 
 <style>
 :root {
-    --primary: #ff5fa2;
-    --primary-glow: rgba(255, 95, 162, 0.4);
-    --secondary: #ff8dbb;
-    --bg-dark: #09090b;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --card-border: rgba(255, 255, 255, 0.08);
+    --paper: #eaeef2;
+    --grid: #d3dbe3;
+    --pen: #1d2840;
+    --red: #d63c3c;
+    --marker: #ffe45e;
+    --hand: 'Caveat', 'Segoe Print', cursive;
+    --body: 'Nunito', system-ui, sans-serif;
 }
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-dark);
-    background-image: 
-        radial-gradient(circle at 50% 0%, rgba(255, 95, 162, 0.15), transparent 70%),
-        radial-gradient(circle at 80% 50%, rgba(138, 43, 226, 0.1), transparent 50%);
-    color: white;
+ 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+body {
+    font-family: var(--body);
+    color: var(--pen);
+    background-color: var(--paper);
+    background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 28px 28px;
+    line-height: 1.6;
     overflow-x: hidden;
 }
-
-/* Floating Heart */
-.heart{
-    position:fixed;
-    bottom:-20px;
-    color: var(--primary);
-    animation: float 9s linear infinite;
-    opacity: 0.6;
-    pointer-events: none;
-    filter: drop-shadow(0 0 8px var(--primary-glow));
-}
-@keyframes float{
-    0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0.8; }
-    50% { opacity: 0.4; }
-    100% { transform: translateY(-120vh) scale(1.3) rotate(360deg); opacity: 0; }
-}
-
-/* Hero Section */
-.hero{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
+ 
+img { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; cursor: pointer; }
+ 
+:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
+ 
+/* ---------- Polaroid ---------- */
+.polaroid {
+    --r: 0deg;
     position: relative;
-    background: 
-        linear-gradient(to bottom, rgba(9, 9, 11, 0.4), rgba(9, 9, 11, 0.95)),
-        url("https://cdn.imagetourls.com/uploads/tyImg/ElFOmY42.jpg") center/cover no-repeat;
-    animation: zoomHero 20s ease-in-out infinite alternate;
+    display: block;
+    width: 100%;
+    background: #fff;
+    padding: 12px 12px 8px;
+    border: 0;
+    text-align: left;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 12px 18px -8px rgba(29, 40, 64, 0.38);
+    transform: rotate(var(--r));
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
-@keyframes zoomHero{
-    from { background-size: 100%; }
-    to { background-size: 110%; }
+ 
+.polaroid .ph {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #cfd6de;
 }
-
-.hero-content {
-    max-width: 800px;
+ 
+.polaroid .ph img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+ 
+.polaroid .cap {
+    display: block;
+    font-family: var(--hand);
+    font-size: 28px;
+    line-height: 1;
+    text-align: center;
+    padding: 12px 4px 10px;
+}
+ 
+button.polaroid:hover,
+button.polaroid:focus-visible {
+    transform: rotate(0deg) translateY(-6px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 20px 24px -10px rgba(29, 40, 64, 0.45);
+}
+ 
+.tape {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    width: 98px;
+    height: 30px;
+    margin-left: -49px;
+    transform: rotate(-4deg);
+    background: rgba(255, 224, 120, 0.72);
+    clip-path: polygon(0 0, 3% 12%, 0 25%, 3% 38%, 0 50%, 3% 62%, 0 75%, 3% 88%, 0 100%, 100% 100%, 97% 88%, 100% 75%, 97% 62%, 100% 50%, 97% 38%, 100% 25%, 97% 12%, 100% 0);
     z-index: 2;
-    background: rgba(15, 15, 20, 0.45);
-    padding: 40px 30px;
-    border-radius: 30px;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
-
-.hero h1{
-    font-family: "Great Vibes", cursive;
-    font-size: 80px;
-    background: linear-gradient(45deg, #fff, var(--secondary), var(--primary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px var(--primary-glow);
-    margin-bottom: 5px;
-    animation: fadeDown 1.5s ease-out;
+ 
+.tape.stripe {
+    background: repeating-linear-gradient(45deg, rgba(214, 60, 60, 0.45) 0 7px, rgba(255, 255, 255, 0.7) 7px 14px);
 }
-
-.sub-title {
-    font-family: 'Cinzel', serif;
-    font-size: 18px;
-    letter-spacing: 4px;
-    color: var(--secondary);
-    text-transform: uppercase;
-    margin-bottom: 25px;
-    opacity: 0.9;
+ 
+.tape.blue { background: rgba(150, 190, 225, 0.7); transform: rotate(3deg); }
+ 
+/* ---------- Hero ---------- */
+.hero {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: clamp(40px, 7vw, 90px) 24px 0;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+    min-height: 92vh;
+    position: relative;
 }
-
-/* Counter Box */
-.counter-box {
-    margin: 25px auto 15px auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 95, 162, 0.2);
-    box-shadow: inset 0 0 20px rgba(255, 95, 162, 0.05);
+ 
+.since {
+    font-family: var(--hand);
+    font-size: clamp(28px, 3.4vw, 38px);
+    line-height: 1;
+    margin-bottom: 4px;
+    transform: rotate(-2deg);
+    transform-origin: left;
 }
-
-.counter-title {
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #ccc;
-    margin-bottom: 12px;
+ 
+.hero h1 {
+    font-family: var(--hand);
+    font-weight: 700;
+    font-size: clamp(76px, 13vw, 170px);
+    line-height: 0.86;
+    letter-spacing: -0.01em;
+    transform: rotate(-2.5deg);
+    transform-origin: left bottom;
 }
-
-.timer {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
+ 
+.scribble { display: block; width: min(86%, 420px); height: auto; margin: 2px 0 0 4px; }
+ 
+.tagline {
+    font-family: var(--hand);
+    font-size: clamp(28px, 3vw, 36px);
+    line-height: 1.15;
+    max-width: 17em;
+    margin-top: 26px;
 }
-
-.time-item {
+ 
+.note {
+    position: relative;
+    width: min(310px, 100%);
+    margin-top: 40px;
+    margin-left: clamp(0px, 3vw, 36px);
+    padding: 30px 26px 22px;
+    background: #fff39a;
+    transform: rotate(2.5deg);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 14px 18px -8px rgba(29, 40, 64, 0.4);
+    font-family: var(--hand);
+    line-height: 1.05;
+}
+ 
+.note .tape { top: -13px; width: 70px; margin-left: -35px; transform: rotate(2deg); background: rgba(255, 255, 255, 0.6); }
+ 
+.note .l1 { font-size: 28px; }
+.note .big { font-size: 78px; font-weight: 700; line-height: 0.95; }
+.note .big small { font-size: 36px; font-weight: 500; margin-left: 4px; }
+.note .l3 { font-size: 27px; margin-top: 6px; }
+.note .l4 { font-size: 24px; margin-top: 10px; color: var(--red); display: flex; align-items: center; gap: 6px; }
+ 
+.hero-photo { justify-self: end; width: min(400px, 100%); padding-top: 20px; }
+.hero-photo .polaroid { --r: 3deg; }
+ 
+.doodle { width: 30px; height: 30px; fill: none; stroke: var(--red); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.hero .d1 { position: absolute; right: 6%; top: 8%; width: 44px; height: 44px; transform: rotate(14deg); }
+.hero .d2 { position: absolute; left: 47%; bottom: 7%; width: 26px; height: 26px; transform: rotate(-16deg); }
+ 
+/* ---------- Sections ---------- */
+.section {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: clamp(70px, 10vw, 130px) 24px 0;
+}
+ 
+.title-wrap { margin-bottom: clamp(36px, 5vw, 60px); }
+ 
+.title {
+    display: inline-block;
+    font-family: var(--hand);
+    font-weight: 700;
+    font-size: clamp(54px, 7.5vw, 92px);
+    line-height: 1;
+    padding: 0 10px;
+    transform: rotate(-1.5deg);
+    background: linear-gradient(transparent 60%, rgba(255, 228, 94, 0.9) 60%);
+}
+ 
+.hint { font-family: var(--hand); font-size: 27px; margin-top: 8px; padding-left: 10px; }
+ 
+/* ---------- Gallery ---------- */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 56px 40px;
+    padding-top: 12px;
+}
+ 
+.gallery .polaroid:nth-child(1) { --r: -3deg; }
+.gallery .polaroid:nth-child(2) { --r: 2deg; margin-top: 36px; }
+.gallery .polaroid:nth-child(3) { --r: -1.5deg; }
+.gallery .polaroid:nth-child(4) { --r: 2.5deg; }
+.gallery .polaroid:nth-child(5) { --r: -2.2deg; margin-top: 30px; }
+.gallery .polaroid:nth-child(6) { --r: 1.4deg; }
+ 
+.gallery .polaroid:nth-child(3n+1) .tape { transform: rotate(-5deg); }
+.gallery .polaroid:nth-child(3n+2) .tape { transform: rotate(4deg); }
+.gallery .polaroid:nth-child(3n) .tape { transform: rotate(-1deg); }
+ 
+/* ---------- Slideshow ---------- */
+.show { max-width: 460px; margin: 0 auto; text-align: center; }
+.show .polaroid { --r: -1.5deg; }
+.show .ph img { opacity: 0; transition: opacity 0.7s ease; }
+.show .ph img.on { opacity: 1; }
+.show .cap { font-size: 32px; }
+ 
+.show-next {
+    margin-top: 34px;
+    background: none;
+    border: 0;
+    font-family: var(--hand);
+    font-size: 30px;
+    text-decoration: underline wavy var(--red);
+    text-underline-offset: 6px;
+    text-decoration-thickness: 2px;
+}
+ 
+.show-note { font-family: var(--hand); font-size: 24px; margin-top: 4px; opacity: 0.75; }
+ 
+/* ---------- Letter ---------- */
+.letter-wrap { max-width: 720px; margin: 0 auto; }
+ 
+.letter {
+    position: relative;
+    background-color: #fffef9;
+    background-image: repeating-linear-gradient(to bottom, transparent 0 35px, #b8c7dc 35px 36px);
+    padding: 36px 36px 36px 84px;
+    transform: rotate(0.6deg);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 18px 28px -12px rgba(29, 40, 64, 0.4);
+    font-family: var(--hand);
+    font-size: 29px;
+    line-height: 36px;
+}
+ 
+.letter::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 62px;
+    width: 2px;
+    background: #e8a3a3;
+}
+ 
+.letter h2 { font-size: 64px; font-weight: 700; line-height: 72px; margin-bottom: 0; }
+.letter p { margin: 0; }
+.letter p + p { margin-top: 36px; }
+.letter mark { background: linear-gradient(transparent 38%, var(--marker) 38%, var(--marker) 92%, transparent 92%); color: inherit; padding: 0 2px; }
+.letter .sign { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.letter .sign .doodle { width: 34px; height: 34px; margin-top: 4px; }
+ 
+/* ---------- Footer ---------- */
+footer {
+    margin-top: clamp(80px, 11vw, 150px);
+    padding: 28px 20px 44px;
+    text-align: center;
+    font-family: var(--hand);
+    font-size: 26px;
+    border-top: 2px dashed rgba(29, 40, 64, 0.3);
+}
+ 
+/* ---------- Lightbox ---------- */
+dialog.lb {
+    border: 0;
+    background: transparent;
+    max-width: none;
+    max-height: none;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+}
+dialog.lb::backdrop { background: rgba(29, 40, 64, 0.88); }
+ 
+.lb-inner {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 70px;
+    justify-content: center;
+    gap: 18px;
+    padding: 20px 16px;
 }
-
-.time-number {
-    font-size: 28px;
-    font-weight: 700;
-    color: #fff;
-    text-shadow: 0 0 12px var(--primary-glow);
+ 
+.lb-inner img {
+    max-width: min(1000px, 100%);
+    max-height: calc(100dvh - 130px);
+    object-fit: contain;
+    border: 12px solid #fff;
+    border-bottom-width: 36px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    transform: rotate(-1deg);
 }
-
-.time-label {
-    font-size: 11px;
-    color: #aaa;
-    text-transform: uppercase;
-    margin-top: 2px;
+ 
+.lb-bar { display: flex; gap: 14px; }
+ 
+.lb-btn {
+    font-family: var(--hand);
+    font-size: 26px;
+    background: #fffef9;
+    border: 2px solid var(--pen);
+    border-radius: 4px;
+    padding: 2px 18px 4px;
+    box-shadow: 3px 3px 0 var(--pen);
 }
-
-.hero p.tagline{
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.85);
-    font-style: italic;
-    animation: fadeUp 2s;
+.lb-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--pen); }
+ 
+/* ---------- Responsive ---------- */
+@media (max-width: 820px) {
+    .hero { grid-template-columns: 1fr; min-height: 0; gap: 56px; padding-bottom: 8px; }
+    .hero-photo { justify-self: center; width: min(340px, 86%); }
+    .hero .d1 { top: 2%; right: 6%; }
+    .hero .d2 { display: none; }
+    .gallery { grid-template-columns: repeat(2, 1fr); gap: 44px 20px; }
+    .polaroid { padding: 8px 8px 4px; }
+    .polaroid .cap { font-size: 23px; padding: 10px 2px 8px; }
+    .tape { width: 72px; margin-left: -36px; height: 24px; top: -12px; }
 }
-
-@keyframes fadeDown{
-    from{opacity:0;transform:translateY(-40px);}
-    to{opacity:1;transform:translateY(0);}
+ 
+@media (max-width: 520px) {
+    .letter { padding: 36px 20px 36px 54px; font-size: 25px; transform: none; }
+    .letter::before { left: 38px; }
+    .letter h2 { font-size: 52px; }
+    .note { margin-left: 0; }
 }
-
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(40px);}
-    to{opacity:1;transform:translateY(0);}
-}
-
-/* Section Common */
-section{
-    padding: 90px 20px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.title-container {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.title{
-    font-family: 'Cinzel', serif;
-    font-size: 32px;
-    letter-spacing: 2px;
-    color: #fff;
-    display: inline-block;
-    position: relative;
-}
-
-.title::after {
-    content: '';
-    display: block;
-    width: 60%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--primary), transparent);
-    margin: 10px auto 0;
-}
-
-/* Gallery - Minimalist Aesthetics (No Text) */
-.gallery{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-.card{
-    overflow: hidden;
-    border-radius: 24px;
-    position: relative;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.card:hover{
-    transform: translateY(-10px) scale(1.02);
-    border-color: rgba(255, 95, 162, 0.4);
-    box-shadow: 0 20px 40px rgba(255, 95, 162, 0.25);
-}
-
-.card img{
-    width: 100%;
-    height: 380px;
-    object-fit: cover;
-    transition: transform 0.8s ease;
-}
-
-.card:hover img{
-    transform: scale(1.08);
-}
-
-/* Glass Overlay on Hover for Subtle Glow */
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 1;
-}
-
-.card:hover::before {
-    opacity: 1;
-}
-
-/* Slideshow */
-.slider-wrapper {
-    position: relative;
-    max-width: 900px;
-    margin: auto;
-}
-
-.slider{
-    width: 100%;
-    overflow: hidden;
-    border-radius: 28px;
-    border: 1px solid var(--card-border);
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
-}
-
-.slides{
-    display: flex;
-    width: 600%;
-    animation: slide 24s infinite ease-in-out;
-}
-
-.slides img{
-    width: 16.666%;
-    height: 520px;
-    object-fit: cover;
-}
-
-@keyframes slide{
-    0%, 12%      { transform: translateX(0%); }
-    16.6%, 28.6% { transform: translateX(-16.666%); }
-    33.3%, 45.3% { transform: translateX(-33.333%); }
-    50%, 62%     { transform: translateX(-50%); }
-    66.6%, 78.6% { transform: translateX(-66.666%); }
-    83.3%, 95.3% { transform: translateX(-83.333%); }
-    100%         { transform: translateX(0%); }
-}
-
-/* Love Letter */
-.letter{
-    max-width: 780px;
-    margin: auto;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 45px 35px;
-    border-radius: 28px;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    text-align: center;
-    line-height: 2;
-    border: 1px solid var(--card-border);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-    position: relative;
-}
-
-.letter h2 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 55px;
-    color: var(--secondary);
-    margin-bottom: 20px;
-}
-
-.letter p {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 300;
-}
-
-/* Footer */
-footer{
-    text-align: center;
-    padding: 40px 20px;
-    color: #777;
-    font-size: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-@media(max-width: 768px){
-    .hero h1{ font-size: 56px; }
-    .sub-title{ font-size: 14px; letter-spacing: 2px; }
-    .slides img{ height: 350px; }
-    .time-number { font-size: 22px; }
-    .time-item { min-width: 55px; }
-    .card img { height: 320px; }
+ 
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0.01ms !important; }
 }
 </style>
 </head>
-
+ 
 <body>
-
-<div id="hearts"></div>
-
-<!-- Hero Section -->
-<div class="hero">
-    <div class="hero-content">
-        <h1>Arya & Lida</h1>
-        <div class="sub-title">Together Since May 26, 2026</div>
-
-        <div class="counter-box">
-            <div class="counter-title">Kita Telah Bersama Selama</div>
-            <div class="timer" id="timer">
-                <div class="time-item"><span class="time-number" id="days">0</span><span class="time-label">Hari</span></div>
-                <div class="time-item"><span class="time-number" id="hours">0</span><span class="time-label">Jam</span></div>
-                <div class="time-item"><span class="time-number" id="minutes">0</span><span class="time-label">Menit</span></div>
-                <div class="time-item"><span class="time-number" id="seconds">0</span><span class="time-label">Detik</span></div>
-            </div>
+ 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="heart" viewBox="0 0 24 24">
+        <path d="M12 21.2C5 15.6 2 11.6 2.6 7.6c.5-3.2 4-5 6.8-3.2 1.2.8 2 1.9 2.6 3.1.7-1.4 1.7-2.4 3-3 2.9-1.3 6.2.6 6.4 3.8.3 4-3 8-9.4 12.9z"/>
+    </symbol>
+</svg>
+ 
+<!-- Hero -->
+<header class="hero">
+    <svg class="doodle d1" aria-hidden="true"><use href="#heart"/></svg>
+    <svg class="doodle d2" aria-hidden="true"><use href="#heart"/></svg>
+ 
+    <div>
+        <p class="since">sejak 26 Mei 2026</p>
+        <h1>Arya &amp; Lida</h1>
+        <svg class="scribble" viewBox="0 0 420 26" fill="none" aria-hidden="true">
+            <path d="M3 17 C60 6, 120 21, 190 11 S 330 6, 417 15" stroke="#d63c3c" stroke-width="5" stroke-linecap="round"/>
+            <path d="M40 23 C120 16, 230 24, 340 19" stroke="#d63c3c" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+        </svg>
+ 
+        <p class="tagline">&ldquo;Setiap foto menyimpan cerita, setiap cerita selalu ada kamu.&rdquo;</p>
+ 
+        <div class="note" role="timer" aria-live="off">
+            <span class="tape"></span>
+            <p class="l1">kita udah bareng</p>
+            <p class="big"><span id="days">0</span><small>hari</small></p>
+            <p class="l3"><span id="hours">0</span> jam <span id="minutes">0</span> menit <span id="seconds">0</span> detik</p>
+            <p class="l4"><svg class="doodle" aria-hidden="true"><use href="#heart"/></svg><span id="span">0 bulan 0 hari</span></p>
         </div>
-
-        <p class="tagline">"Setiap foto menyimpan cerita, setiap cerita selalu ada kamu."</p>
     </div>
-</div>
-
-<!-- Gallery Section -->
-<section>
-    <div class="title-container">
+ 
+    <figure class="hero-photo">
+        <div class="polaroid">
+            <span class="tape stripe"></span>
+            <div class="ph"><img src="https://cdn.imagetourls.com/uploads/tyImg/ElFOmY42.jpg" alt="Foto Arya dan Lida"></div>
+            <span class="cap">kita berdua</span>
+        </div>
+    </figure>
+</header>
+ 
+<main>
+ 
+<!-- Gallery -->
+<section class="section" id="gallery">
+    <div class="title-wrap">
         <h2 class="title">Our Gallery</h2>
+        <p class="hint">ketuk fotonya buat lihat lebih besar</p>
     </div>
-
-    <div class="gallery">
-        <div class="card"><img src="https://cdn.imagetourls.com/uploads/tyImg/ElFOmY42.jpg" alt="Moment 1"></div>
-        <div class="card"><img src="https://cdn.imagetourls.com/uploads/tyImg/18XATnRSN.jpg" alt="Moment 2"></div>
-        <div class="card"><img src="https://cdn.imagetourls.com/uploads/tyImg/LXBaaGJP.jpg" alt="Moment 3"></div>
-        <div class="card"><img src="https://cdn.phototourl.com/member/2026-11-02-fba825a8-6fdb-43de-a5ee-407ae942e709.webp" alt="Moment 4"></div>
-        <div class="card"><img src="https://cdn.phototourl.com/member/2026-11-02-8010fa3c-854b-4aa5-b973-df302a1df860.webp" alt="Moment 5"></div>
-        <div class="card"><img src="https://cdn.phototourl.com/member/2026-11-02-421d063e-1d54-4f14-a802-6663cd724f2e.webp" alt="Moment 6"></div>
+ 
+    <div class="gallery" id="galleryGrid">
+        <button class="polaroid" type="button" aria-label="Buka foto 1"><span class="tape stripe"></span><div class="ph"><img src="https://cdn.imagetourls.com/uploads/tyImg/ElFOmY42.jpg" alt="Kenangan 1" loading="lazy" decoding="async"></div><span class="cap">kenangan ke-1</span></button>
+        <button class="polaroid" type="button" aria-label="Buka foto 2"><span class="tape"></span><div class="ph"><img src="https://cdn.imagetourls.com/uploads/tyImg/18XATnRSN.jpg" alt="Kenangan 2" loading="lazy" decoding="async"></div><span class="cap">kenangan ke-2</span></button>
+        <button class="polaroid" type="button" aria-label="Buka foto 3"><span class="tape blue"></span><div class="ph"><img src="https://cdn.imagetourls.com/uploads/tyImg/LXBaaGJP.jpg" alt="Kenangan 3" loading="lazy" decoding="async"></div><span class="cap">kenangan ke-3</span></button>
+        <button class="polaroid" type="button" aria-label="Buka foto 4"><span class="tape"></span><div class="ph"><img src="https://cdn.phototourl.com/member/2026-11-02-fba825a8-6fdb-43de-a5ee-407ae942e709.webp" alt="Kenangan 4" loading="lazy" decoding="async"></div><span class="cap">kenangan ke-4</span></button>
+        <button class="polaroid" type="button" aria-label="Buka foto 5"><span class="tape blue"></span><div class="ph"><img src="https://cdn.phototourl.com/member/2026-11-02-8010fa3c-854b-4aa5-b973-df302a1df860.webp" alt="Kenangan 5" loading="lazy" decoding="async"></div><span class="cap">kenangan ke-5</span></button>
+        <button class="polaroid" type="button" aria-label="Buka foto 6"><span class="tape stripe"></span><div class="ph"><img src="https://cdn.phototourl.com/member/2026-11-02-421d063e-1d54-4f14-a802-6663cd724f2e.webp" alt="Kenangan 6" loading="lazy" decoding="async"></div><span class="cap">kenangan ke-6</span></button>
     </div>
 </section>
-
-<!-- Slideshow Section -->
-<section>
-    <div class="title-container">
-        <h2 class="title">Memories Slideshow</h2>
+ 
+<!-- Slideshow -->
+<section class="section" id="memories">
+    <div class="title-wrap">
+        <h2 class="title">Memories</h2>
     </div>
-
-    <div class="slider-wrapper">
-        <div class="slider">
-            <div class="slides">
-                <img src="https://cdn.imagetourls.com/uploads/tyImg/ElFOmY42.jpg" alt="Slide 1">
-                <img src="https://cdn.imagetourls.com/uploads/tyImg/18XATnRSN.jpg" alt="Slide 2">
-                <img src="https://cdn.imagetourls.com/uploads/tyImg/LXBaaGJP.jpg" alt="Slide 3">
-                <img src="https://cdn.phototourl.com/member/2026-11-02-fba825a8-6fdb-43de-a5ee-407ae942e709.webp" alt="Slide 4">
-                <img src="https://cdn.phototourl.com/member/2026-11-02-8010fa3c-854b-4aa5-b973-df302a1df860.webp" alt="Slide 5">
-                <img src="https://cdn.phototourl.com/member/2026-11-02-421d063e-1d54-4f14-a802-6663cd724f2e.webp" alt="Slide 6">
-            </div>
+ 
+    <div class="show">
+        <button class="polaroid" id="showBtn" type="button" aria-label="Ganti ke foto berikutnya">
+            <span class="tape blue"></span>
+            <div class="ph" id="showPh"></div>
+            <span class="cap" id="showCap">1 dari 6</span>
+        </button>
+        <button class="show-next" id="showNext" type="button">foto berikutnya</button>
+        <p class="show-note">gantinya otomatis tiap beberapa detik</p>
+    </div>
+</section>
+ 
+<!-- Letter -->
+<section class="section" id="letter">
+    <div class="letter-wrap">
+        <article class="letter">
+            <h2>For You, Lida</h2>
+            <p>
+                Terima kasih sudah menjadi bagian dari <mark>setiap cerita</mark> yang tersimpan di sini.
+                Semoga setiap langkah yang kita lewati selalu membawa tawa, kebahagiaan,
+                dan kenangan baru yang lebih indah dari hari ini.
+            </p>
+            <p class="sign">
+                <svg class="doodle" aria-hidden="true"><use href="#heart"/></svg>
+                Arya &amp; Lida, forever together
+                <svg class="doodle" aria-hidden="true"><use href="#heart"/></svg>
+            </p>
+        </article>
+    </div>
+</section>
+ 
+</main>
+ 
+<footer>
+    dibuat dengan sepenuh hati untuk Arya &amp; Lida
+</footer>
+ 
+<!-- Lightbox -->
+<dialog class="lb" id="lb" aria-label="Penampil foto">
+    <div class="lb-inner" id="lbInner">
+        <img id="lbImg" alt="">
+        <div class="lb-bar">
+            <button class="lb-btn" id="lbPrev" type="button">sebelumnya</button>
+            <button class="lb-btn" id="lbNext" type="button">berikutnya</button>
+            <button class="lb-btn" id="lbClose" type="button">tutup</button>
         </div>
     </div>
-</section>
-
-<!-- Letter Section -->
-<section>
-    <div class="letter">
-        <h2>For You, Lida</h2>
-        <p>
-            Terima kasih sudah menjadi bagian dari setiap cerita yang tersimpan di sini.
-            Semoga setiap langkah yang kita lewati selalu membawa tawa, kebahagiaan,
-            dan kenangan baru yang lebih indah dari hari ini.
-        </p>
-        <p style="margin-top:20px; color:var(--secondary); font-weight: 500;">
-            ❤️ Arya & Lida Forever Together ❤️
-        </p>
-    </div>
-</section>
-
-<footer>
-    Created with ❤️ for Arya & Lida
-</footer>
-
+</dialog>
+ 
 <script>
-/* Floating Hearts */
-const container = document.getElementById("hearts");
-
-function createHeart(){
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (14 + Math.random() * 22) + "px";
-    heart.style.animationDuration = (6 + Math.random() * 4) + "s";
-    container.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 10000);
-}
-
-setInterval(createHeart, 350);
-
-/* Relationship Counter (Starts 26 Mei 2026) */
-const startDate = new Date(2026, 4, 26, 0, 0, 0); // Month is 0-indexed (4 = Mei)
-
-function updateCounter() {
-    const now = new Date();
-    const diff = now - startDate;
-
-    if (diff < 0) {
-        document.getElementById("days").innerText = "0";
-        document.getElementById("hours").innerText = "0";
-        document.getElementById("minutes").innerText = "0";
-        document.getElementById("seconds").innerText = "0";
-        return;
+(function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ 
+    /* ---------- Counter (sejak 26 Mei 2026) ---------- */
+    var start = new Date(2026, 4, 26, 0, 0, 0);
+    var el = {
+        d: document.getElementById('days'),
+        h: document.getElementById('hours'),
+        m: document.getElementById('minutes'),
+        s: document.getElementById('seconds'),
+        span: document.getElementById('span')
+    };
+ 
+    function tick() {
+        var now = new Date();
+        var diff = now - start;
+        if (diff < 0) diff = 0;
+ 
+        el.d.textContent = Math.floor(diff / 864e5);
+        el.h.textContent = Math.floor((diff % 864e5) / 36e5);
+        el.m.textContent = Math.floor((diff % 36e5) / 6e4);
+        el.s.textContent = Math.floor((diff % 6e4) / 1000);
+ 
+        var months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+        var anchor = new Date(start.getFullYear(), start.getMonth() + months, start.getDate());
+        if (anchor > now) {
+            months--;
+            anchor = new Date(start.getFullYear(), start.getMonth() + months, start.getDate());
+        }
+        if (months < 0) { months = 0; anchor = start; }
+        var days = Math.floor((now - anchor) / 864e5);
+        el.span.textContent = 'tepatnya ' + months + ' bulan ' + days + ' hari';
     }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    document.getElementById("days").innerText = days;
-    document.getElementById("hours").innerText = hours;
-    document.getElementById("minutes").innerText = minutes;
-    document.getElementById("seconds").innerText = seconds;
-}
-
-updateCounter();
-setInterval(updateCounter, 1000);
+    tick();
+    setInterval(tick, 1000);
+ 
+    /* ---------- Photos (diambil dari galeri) ---------- */
+    var tiles = Array.prototype.slice.call(document.querySelectorAll('#galleryGrid .polaroid'));
+    var photos = tiles.map(function (t) {
+        var img = t.querySelector('img');
+        return { src: img.getAttribute('src'), alt: img.getAttribute('alt') };
+    });
+    var total = photos.length;
+ 
+    /* ---------- Slideshow ---------- */
+    var showPh = document.getElementById('showPh');
+    var showCap = document.getElementById('showCap');
+    var slides = [];
+    var cur = 0;
+    var timer = null;
+    var paused = false;
+ 
+    photos.forEach(function (p, i) {
+        var img = document.createElement('img');
+        img.src = p.src;
+        img.alt = p.alt;
+        img.loading = i === 0 ? 'eager' : 'lazy';
+        showPh.appendChild(img);
+        slides[i] = img;
+    });
+ 
+    function schedule() {
+        clearTimeout(timer);
+        if (reduce || paused) return;
+        timer = setTimeout(function () { go(cur + 1); }, 5000);
+    }
+ 
+    function go(i) {
+        cur = (i + total) % total;
+        slides.forEach(function (s, k) { s.classList.toggle('on', k === cur); });
+        showCap.textContent = (cur + 1) + ' dari ' + total;
+        schedule();
+    }
+ 
+    var showBtn = document.getElementById('showBtn');
+    showBtn.addEventListener('click', function () { go(cur + 1); });
+    document.getElementById('showNext').addEventListener('click', function () { go(cur + 1); });
+    showBtn.addEventListener('mouseenter', function () { paused = true; clearTimeout(timer); });
+    showBtn.addEventListener('mouseleave', function () { paused = false; schedule(); });
+ 
+    go(0);
+ 
+    /* ---------- Lightbox ---------- */
+    var lb = document.getElementById('lb');
+    var lbImg = document.getElementById('lbImg');
+    var li = 0;
+ 
+    function show(i) {
+        li = (i + total) % total;
+        lbImg.src = photos[li].src;
+        lbImg.alt = photos[li].alt;
+    }
+    function openLb(i) {
+        show(i);
+        if (typeof lb.showModal === 'function') lb.showModal();
+        else lb.setAttribute('open', '');
+    }
+    function closeLb() {
+        if (typeof lb.close === 'function') lb.close();
+        else lb.removeAttribute('open');
+    }
+ 
+    tiles.forEach(function (t, i) { t.addEventListener('click', function () { openLb(i); }); });
+    document.getElementById('lbClose').addEventListener('click', closeLb);
+    document.getElementById('lbPrev').addEventListener('click', function () { show(li - 1); });
+    document.getElementById('lbNext').addEventListener('click', function () { show(li + 1); });
+    lb.addEventListener('click', function (e) {
+        if (e.target === lb || e.target.id === 'lbInner') closeLb();
+    });
+    lb.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') show(li - 1);
+        if (e.key === 'ArrowRight') show(li + 1);
+    });
+})();
 </script>
-
+ 
 </body>
 </html>
+ 
+Claude finished the response
